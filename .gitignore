@@ -1,3 +1,6 @@
+# Maven
+/target/
+
 # Compiled class file
 *.class
 
@@ -7,6 +10,13 @@
 # BlueJ files
 *.ctxt
 .idea/
+*.iml
+out/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
