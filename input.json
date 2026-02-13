@@ -1,0 +1,6 @@
+{
+  "companyName": "Insurance Corp",
+  "appVersion": "Version 1.0",
+  "developerNames": "Matan Reuven Tal, Omer Lev",
+  "insuranceTypes": ["CAR", "APARTMENT", "LIFE", "HEALTH"]
+}

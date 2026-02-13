@@ -1,5 +1,6 @@
 package com.insurance;
 
+import com.insurance.service.ServiceLocator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,6 +10,9 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        // Initialize all backend services
+        ServiceLocator.initialize();
 
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("/main.fxml")
