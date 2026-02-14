@@ -84,6 +84,28 @@ public class InsuranceDataManager {
     }
 
     /**
+     * Deletes a policy by its ID.
+     *
+     * @param id the policy ID to delete
+     * @return true if a policy was found and removed, false otherwise
+     */
+    public boolean deletePolicy(String id) {
+        DataStore data = loadData();
+        boolean removed = false;
+        for (int i = 0; i < data.policies.size(); i++) {
+            if (data.policies.get(i).getId().equals(id)) {
+                data.policies.remove(i);
+                removed = true;
+                break;
+            }
+        }
+        if (removed) {
+            saveData(data);
+        }
+        return removed;
+    }
+
+    /**
      * Returns all saved claims.
      *
      * @return list of all claims

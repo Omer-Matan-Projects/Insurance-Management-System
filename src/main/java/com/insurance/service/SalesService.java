@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * Implementation of ISalesService.
- * Handles policy creation, logging, and observer notifications.
+ * Handles policy creation, deletion, logging, and observer notifications.
  *
  * <p>Design Pattern: Observer (this class is the Subject)</p>
  */
@@ -53,6 +53,23 @@ public class SalesService implements ISalesService {
     }
 
     @Override
+    public boolean deletePolicy(String policyId) {
+        boolean deleted = dataManager.deletePolicy(policyId);
+
+        if (deleted) {
+            // Log the deletion
+            String formattedDate = LocalDate.now().format(LOG_DATE_FORMAT);
+            AppLogger.getInstance().log("SYSTEM", "", formattedDate,
+                    "Policy deleted: " + policyId, "DELETION");
+
+            // Notify all registered observers
+            notifyObserversDeleted(policyId);
+        }
+
+        return deleted;
+    }
+
+    @Override
     public List<InsuranceType> getAvailableInsuranceTypes() {
         return ConfigService.getInstance().getAvailableInsuranceTypes();
     }
@@ -75,6 +92,17 @@ public class SalesService implements ISalesService {
     private void notifyObservers(Policy policy) {
         for (PolicyObserver observer : observers) {
             observer.onPolicyCreated(policy);
+        }
+    }
+
+    /**
+     * Notifies all registered observers that a policy was deleted.
+     *
+     * @param policyId the ID of the deleted policy
+     */
+    private void notifyObserversDeleted(String policyId) {
+        for (PolicyObserver observer : observers) {
+            observer.onPolicyDeleted(policyId);
         }
     }
 }

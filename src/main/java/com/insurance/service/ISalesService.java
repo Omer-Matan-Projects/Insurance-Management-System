@@ -31,7 +31,15 @@ public interface ISalesService {
     List<InsuranceType> getAvailableInsuranceTypes();
 
     /**
-     * Registers an observer to be notified when a policy is created.
+     * Deletes a policy by its ID.
+     *
+     * @param policyId the ID of the policy to delete
+     * @return true if the policy was found and deleted, false otherwise
+     */
+    boolean deletePolicy(String policyId);
+
+    /**
+     * Registers an observer to be notified when a policy is created or deleted.
      *
      * @param observer the observer to register
      */
