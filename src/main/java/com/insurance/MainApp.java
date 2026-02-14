@@ -4,7 +4,9 @@ import com.insurance.service.ServiceLocator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import com.insurance.navigation.NavigationManager;
 
 public class MainApp extends Application {
 
@@ -14,18 +16,24 @@ public class MainApp extends Application {
         // Initialize all backend services
         ServiceLocator.initialize();
 
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/main.fxml")
+        FXMLLoader loader =
+                new FXMLLoader(getClass().getResource("/fxml/mainLayout.fxml"));
+
+        BorderPane root = loader.load();
+
+        Scene scene = new Scene(root, 900, 600);
+        scene.getStylesheets().add(
+                getClass().getResource("/css/styles.css").toExternalForm()
         );
 
-        Scene scene = new Scene(loader.load());
-        scene.getStylesheets().add(
-                getClass().getResource("/styles.css").toExternalForm()
-        );
+        NavigationManager.init(root);
 
         stage.setTitle("Insurance Management System");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
+
+        NavigationManager.navigateTo("home.fxml");
     }
 
     public static void main(String[] args) {

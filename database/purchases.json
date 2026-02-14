@@ -1,0 +1,13 @@
+{
+  "policies": [
+    {
+      "type": "CAR",
+      "id": "43cea947",
+      "firstName": "Omer",
+      "lastName": "Lev",
+      "date": "2026-02-16",
+      "remarks": ""
+    }
+  ],
+  "claims": []
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.insurance.ui_controller.HomeController"
+      alignment="TOP_CENTER"
+      spacing="25">
+
+    <Separator/>
+
+    <Label text="Sell" styleClass="section-label"/>
+
+    <GridPane hgap="20" vgap="20" alignment="CENTER">
+        <Button text="Car Insurance"
+                onAction="#onCarClicked"
+                styleClass="primary-button"
+                GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+
+        <Button text="Apartment Insurance"
+                onAction="#onApartmentClicked"
+                styleClass="primary-button"
+                GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Button text="Life Insurance"
+                onAction="#onLifeClicked"
+                styleClass="primary-button"
+                GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+
+        <Button text="Health Insurance"
+                onAction="#onHealthClicked"
+                styleClass="primary-button"
+                GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <Separator/>
+
+    <Label text="Customer Service" styleClass="section-label"/>
+
+    <Button text="Submit Claim"
+            onAction="#onSubmitClaimClicked"
+            styleClass="primary-button"/>
+
+    <Separator/>
+
+    <Label text="View" styleClass="section-label"/>
+
+    <Button text="View All Purchases"
+            onAction="#onViewClicked"
+            styleClass="primary-button"/>
+
+</VBox>
