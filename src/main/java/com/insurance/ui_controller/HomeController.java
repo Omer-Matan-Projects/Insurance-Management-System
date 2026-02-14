@@ -7,11 +7,6 @@ import com.insurance.model.InsuranceType;
 public class HomeController {
 
     @FXML
-    public void initialize() {
-        // Initialization logic if needed
-    }
-
-    @FXML
     private void onCarClicked() {
         NavigationManager.navigateToSell(InsuranceType.CAR);
     }
@@ -32,12 +27,7 @@ public class HomeController {
     }
 
     @FXML
-    private void onSubmitClaimClicked() {
-        // TODO: implement navigation to submit claim view
-    }
-
-    @FXML
     private void onViewClicked() {
-        // TODO: implement navigation to view policies/claims view
+        NavigationManager.navigateTo("policyManagement.fxml");
     }
 }

@@ -21,7 +21,7 @@ public class MainApp extends Application {
 
         BorderPane root = loader.load();
 
-        Scene scene = new Scene(root, 900, 600);
+        Scene scene = new Scene(root, 1200, 600);
         scene.getStylesheets().add(
                 getClass().getResource("/css/styles.css").toExternalForm()
         );

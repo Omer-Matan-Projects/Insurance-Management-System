@@ -22,10 +22,10 @@
     -fx-background-radius: 8;
     -fx-pref-width: 180px;
     -fx-pref-height: 20px;
+    -fx-cursor: hand;
 }
 .primary-button:hover {
     -fx-background-color: #1D3557;
-    -fx-cursor: hand;
 }
 
 .secondary-button {
@@ -35,12 +35,59 @@
     -fx-background-radius: 8;
     -fx-pref-width: 180px;
     -fx-pref-height: 20px;
+    -fx-cursor: hand;
 }
 .secondary-button:hover {
     -fx-background-color: #C81927;
-    -fx-cursor: hand;
 }
 
 .form-field {
     -fx-pref-width: 450px;
+}
+
+/* Table Styles */
+.table-view .column-header .label {
+    -fx-alignment: CENTER;
+}
+.table-view .table-cell {
+    -fx-alignment: CENTER;
+}
+.table-row-cell {
+    -fx-cell-size: 40px;
+}
+
+.table-button {
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-background-radius: 5;
+    -fx-pref-width: 110px;
+    -fx-cursor: hand;
+}
+
+.table-button-remarks {
+    -fx-background-color: #1D3557;
+}
+.table-button-remarks:hover {
+    -fx-background-color: #0D1B2A;
+}
+
+.table-button-view-claims {
+    -fx-background-color: #2A9D8F;
+}
+.table-button-view-claims:hover {
+    -fx-background-color: #1F7A6E;
+}
+
+.table-button-claim {
+    -fx-background-color: #457B9D;
+}
+.table-button-claim:hover {
+    -fx-background-color: #1D3557;
+}
+
+.table-button-delete {
+    -fx-background-color: #E63946;
+}
+.table-button-delete:hover {
+    -fx-background-color: #C81927;
 }

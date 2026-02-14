@@ -25,22 +25,27 @@ public class SellInsuranceController {
     @FXML
     private void onSaveClicked() {
 
-        if (!validateInput()) {
+        String firstName = firstNameField.getText() == null ? "" : firstNameField.getText().trim();
+        String lastName  = lastNameField.getText() == null ? "" : lastNameField.getText().trim();
+        LocalDate selectedDate = datePicker.getValue();
+        String remarks = remarksArea.getText() == null ? "" : remarksArea.getText().trim();
+
+        if (!validateInput(firstName, lastName, selectedDate)) {
             return;
         }
 
         ServiceLocator.getSalesService().createPolicy(
-                firstNameField.getText().trim(),
-                lastNameField.getText().trim(),
-                datePicker.getValue(),
-                remarksArea.getText().trim(),
+                firstName,
+                lastName,
+                selectedDate,
+                remarks,
                 insuranceType
         );
 
         showInformationAlert("Policy created successfully!");
-
         clearForm();
     }
+
 
     @FXML
     private void onBackClicked() {
@@ -52,13 +57,11 @@ public class SellInsuranceController {
         typeLabel.setText("Create New " + type.getDisplayName() + " Policy");
     }
 
-    private boolean validateInput() {
+    private boolean validateInput(String firstName,
+                                  String lastName,
+                                  LocalDate selectedDate) {
 
         StringBuilder errors = new StringBuilder();
-
-        String firstName = firstNameField.getText() == null ? "" : firstNameField.getText().trim();
-        String lastName  = lastNameField.getText()  == null ? "" : lastNameField.getText().trim();
-        LocalDate selectedDate = datePicker.getValue();
 
         if (firstName.isEmpty()) {
             errors.append("First name cannot be empty.\n");
@@ -72,6 +75,10 @@ public class SellInsuranceController {
             errors.append("Please select a date.\n");
         } else if (selectedDate.isBefore(LocalDate.now())) {
             errors.append("Date cannot be in the past.\n");
+        }
+
+        if (insuranceType == null) {
+            errors.append("Insurance type is not selected.\n");
         }
 
         if (errors.length() > 0) {

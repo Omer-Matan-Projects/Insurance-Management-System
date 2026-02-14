@@ -11,7 +11,7 @@
 
     <Separator/>
 
-    <Label text="Sell" styleClass="section-label"/>
+    <Label text="Create New Policy" styleClass="section-label"/>
 
     <GridPane hgap="20" vgap="20" alignment="CENTER">
         <Button text="Car Insurance"
@@ -37,17 +37,9 @@
 
     <Separator/>
 
-    <Label text="Customer Service" styleClass="section-label"/>
+    <Label text="Policy Management (View, Submit Claims, Delete)" styleClass="section-label"/>
 
-    <Button text="Submit Claim"
-            onAction="#onSubmitClaimClicked"
-            styleClass="primary-button"/>
-
-    <Separator/>
-
-    <Label text="View" styleClass="section-label"/>
-
-    <Button text="View All Purchases"
+    <Button text="View All Policies"
             onAction="#onViewClicked"
             styleClass="primary-button"/>
 
