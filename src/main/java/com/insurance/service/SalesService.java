@@ -1,6 +1,5 @@
 package com.insurance.service;
 
-import com.insurance.config.ConfigService;
 import com.insurance.data.InsuranceDataManager;
 import com.insurance.factory.InsuranceFactory;
 import com.insurance.logger.AppLogger;
@@ -67,11 +66,6 @@ public class SalesService implements ISalesService {
         }
 
         return deleted;
-    }
-
-    @Override
-    public List<InsuranceType> getAvailableInsuranceTypes() {
-        return ConfigService.getInstance().getAvailableInsuranceTypes();
     }
 
     @Override

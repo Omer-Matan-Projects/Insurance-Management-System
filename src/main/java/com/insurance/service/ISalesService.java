@@ -4,7 +4,6 @@ import com.insurance.model.InsuranceType;
 import com.insurance.model.Policy;
 
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * Service interface for selling insurance policies.
@@ -22,13 +21,6 @@ public interface ISalesService {
      * @return the created policy
      */
     Policy createPolicy(String firstName, String lastName, LocalDate date, String remarks, InsuranceType type);
-
-    /**
-     * Returns the list of available insurance types.
-     *
-     * @return list of insurance types
-     */
-    List<InsuranceType> getAvailableInsuranceTypes();
 
     /**
      * Deletes a policy by its ID.
