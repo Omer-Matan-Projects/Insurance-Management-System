@@ -53,13 +53,21 @@ public class SalesService implements ISalesService {
 
     @Override
     public boolean deletePolicy(String policyId) {
+        // Look up policy details before deletion for informative logging
+        Policy policy = dataManager.getPolicyById(policyId);
+
         boolean deleted = dataManager.deletePolicy(policyId);
 
         if (deleted) {
-            // Log the deletion
+            // Log the deletion with full policy details
             String formattedDate = LocalDate.now().format(LOG_DATE_FORMAT);
-            AppLogger.getInstance().log("SYSTEM", "", formattedDate,
-                    "Policy deleted: " + policyId, "DELETION");
+            if (policy != null) {
+                AppLogger.getInstance().log(policy.getFirstName(), policy.getLastName(), formattedDate,
+                        policy.getRemarks(), policy.getType().getDisplayName() + " (DELETION)");
+            } else {
+                AppLogger.getInstance().log("SYSTEM", "", formattedDate,
+                        "Policy deleted: " + policyId, "DELETION");
+            }
 
             // Notify all registered observers
             notifyObserversDeleted(policyId);
