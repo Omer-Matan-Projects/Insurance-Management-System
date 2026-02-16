@@ -31,9 +31,4 @@ public class DataService implements IDataService {
     public Policy getPolicyById(String policyId) {
         return dataManager.getPolicyById(policyId);
     }
-
-    @Override
-    public List<Policy> searchPoliciesByName(String name) {
-        return dataManager.searchPoliciesByName(name);
-    }
 }

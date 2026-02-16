@@ -28,10 +28,6 @@ public interface IClaimService {
      */
     List<Claim> getClaimsByPolicy(String policyId);
 
-    /**
-     * Returns all claims in the system.
-     *
-     * @return list of all claims
-     */
-    List<Claim> getAllClaims();
+
+
 }

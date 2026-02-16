@@ -45,8 +45,5 @@ public class ClaimService implements IClaimService {
         return dataManager.getClaimsByPolicyId(policyId);
     }
 
-    @Override
-    public List<Claim> getAllClaims() {
-        return dataManager.getAllClaims();
-    }
+
 }

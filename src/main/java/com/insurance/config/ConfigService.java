@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Singleton service that loads application configuration from input.json.
  *
- * <p>Design Pattern: Singleton</p>
+ * Design Pattern: Singleton
  */
 public class ConfigService implements IConfigService {
 

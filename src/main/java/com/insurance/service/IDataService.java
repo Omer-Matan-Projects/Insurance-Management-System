@@ -23,12 +23,4 @@ public interface IDataService {
      * @return the matching policy, or null if not found
      */
     Policy getPolicyById(String policyId);
-
-    /**
-     * Searches policies by customer name (partial match supported).
-     *
-     * @param name the name to search for
-     * @return list of matching policies
-     */
-    List<Policy> searchPoliciesByName(String name);
 }

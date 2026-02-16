@@ -9,7 +9,7 @@ import java.util.UUID;
  * Factory class for creating insurance policies and claims.
  * Uses a standard switch on InsuranceType to instantiate the correct Policy subclass.
  *
- * <p>Design Pattern: Factory</p>
+ * Design Pattern: Factory
  */
 public class InsuranceFactory {
 

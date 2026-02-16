@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  */
 public class InsuranceDataManager {
 
-    private static final String DATA_FILE = "data/purchases.json";
+    private static final String DATA_FILE = "database/purchases.json";
     private final Gson gson;
 
     /**
@@ -59,20 +59,6 @@ public class InsuranceDataManager {
     }
 
     /**
-     * Searches policies by customer name (partial match, case-insensitive).
-     *
-     * @param name the name to search for
-     * @return list of matching policies
-     */
-    public List<Policy> searchPoliciesByName(String name) {
-        String lowerName = name.toLowerCase();
-        return loadData().policies.stream()
-                .filter(p -> p.getFirstName().toLowerCase().contains(lowerName)
-                        || p.getLastName().toLowerCase().contains(lowerName))
-                .collect(Collectors.toList());
-    }
-
-    /**
      * Saves a new policy to the data file.
      *
      * @param policy the policy to save
@@ -105,14 +91,7 @@ public class InsuranceDataManager {
         return removed;
     }
 
-    /**
-     * Returns all saved claims.
-     *
-     * @return list of all claims
-     */
-    public List<Claim> getAllClaims() {
-        return loadData().claims;
-    }
+
 
     /**
      * Returns all claims associated with a specific policy.
@@ -160,7 +139,11 @@ public class InsuranceDataManager {
      */
     private void saveData(DataStore data) {
         File file = new File(DATA_FILE);
-        file.getParentFile().mkdirs();
+        File parentDir = file.getParentFile();
+        if (parentDir != null && !parentDir.exists() && !parentDir.mkdirs()) {
+            System.err.println("Failed to create data directory: " + parentDir.getPath());
+            return;
+        }
         try (FileWriter writer = new FileWriter(file)) {
             gson.toJson(data, writer);
         } catch (IOException e) {

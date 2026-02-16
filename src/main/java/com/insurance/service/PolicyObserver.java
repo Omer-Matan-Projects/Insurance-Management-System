@@ -5,7 +5,7 @@ import com.insurance.model.Policy;
 /**
  * Observer interface for policy lifecycle events.
  * Classes that want to be notified when policies are created or deleted
- * should implement this interface.
+ *
  */
 public interface PolicyObserver {
 

@@ -8,9 +8,9 @@ import java.io.PrintWriter;
  * Singleton logger that records insurance purchase transactions
  * to a comma-delimited text file (log.txt).
  *
- * <p>Log format: Name,FamilyName,Date,Remarks,InsuranceType</p>
+ * Log format: Name,FamilyName,Date,Remarks,InsuranceType
  *
- * <p>Design Pattern: Singleton</p>
+ * Design Pattern: Singleton
  */
 public class AppLogger {
 

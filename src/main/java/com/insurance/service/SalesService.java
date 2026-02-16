@@ -14,8 +14,7 @@ import java.util.List;
 /**
  * Implementation of ISalesService.
  * Handles policy creation, deletion, logging, and observer notifications.
- *
- * <p>Design Pattern: Observer (this class is the Subject)</p>
+ * Design Pattern: Observer
  */
 public class SalesService implements ISalesService {
 
