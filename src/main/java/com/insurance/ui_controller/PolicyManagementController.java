@@ -21,7 +21,7 @@ import java.time.format.DateTimeFormatter;
  * Controller for the Policy Management view.
  * Displays all policies in a table with actions for claim submission and deletion.
  *
- * <p>Design Pattern: Observer - implements PolicyObserver to react to policy changes</p>
+ * Design Pattern: Observer - implements PolicyObserver to react to policy changes
  */
 public class PolicyManagementController implements PolicyObserver {
 
@@ -36,6 +36,11 @@ public class PolicyManagementController implements PolicyObserver {
     private final ObservableList<Policy> policyData = FXCollections.observableArrayList();
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
+    /**
+     * Initializes the controller.
+     * Sets up the table columns, action buttons, and loads policies from the data service.
+     * Also registers as an observer for policy changes.
+     */
     @FXML
     public void initialize() {
         setupTableColumns();
@@ -185,7 +190,7 @@ public class PolicyManagementController implements PolicyObserver {
                 claimsText.append("Claim ID: ").append(claim.getId()).append("\n");
                 claimsText.append("Date: ").append(claim.getClaimDate().format(DATE_FORMAT)).append("\n");
                 claimsText.append("Description: ").append(claim.getDescription()).append("\n");
-                claimsText.append("─────────────────────\n");
+                claimsText.append("--------------------------------------\n");
             }
             claimsDialog.setContentText(claimsText.toString());
         }
@@ -258,14 +263,24 @@ public class PolicyManagementController implements PolicyObserver {
         NavigationManager.navigateTo("home.fxml");
     }
 
-    // ==================== PolicyObserver Implementation ====================
-
+    /**
+     * Observer callback when a new policy is created.
+     * Adds the new policy to the table.
+     *
+     * @param policy the newly created policy
+     */
     @Override
     public void onPolicyCreated(Policy policy) {
         // Update table on JavaFX Application Thread
         Platform.runLater(() -> policyData.add(policy));
     }
 
+    /**
+    * Observer callback when a policy is deleted.
+    * Removes the deleted policy from the table.
+    *
+    * @param policyId the ID of the deleted policy
+    */
     @Override
     public void onPolicyDeleted(String policyId) {
         // Update table on JavaFX Application Thread
@@ -274,8 +289,11 @@ public class PolicyManagementController implements PolicyObserver {
         );
     }
 
-    // ==================== Helper Methods ====================
-
+    /**
+     * Utility method to show an error alert with the given message.
+     *
+     * @param message the error message to display
+     */
     private void showErrorAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText("Error");
@@ -283,6 +301,11 @@ public class PolicyManagementController implements PolicyObserver {
         alert.showAndWait();
     }
 
+    /**
+     * Utility method to show an information alert with the given message.
+     *
+     * @param message the information message to display
+     */
     private void showInformationAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText("Success");

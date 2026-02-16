@@ -4,6 +4,10 @@ import javafx.fxml.FXML;
 import com.insurance.navigation.NavigationManager;
 import com.insurance.model.InsuranceType;
 
+/**
+ * Controller for the home view.
+ * Handles navigation to policy creation and management screens.
+ */
 public class HomeController {
 
     @FXML
