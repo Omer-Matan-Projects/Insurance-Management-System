@@ -26,7 +26,7 @@ public class AppLogger {
      *
      * @return the AppLogger instance
      */
-    public static synchronized AppLogger getInstance() {
+    public static AppLogger getInstance() {
         if (instance == null) {
             instance = new AppLogger();
         }
